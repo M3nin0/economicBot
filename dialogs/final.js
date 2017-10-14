@@ -7,7 +7,7 @@ library.library(playQuiz);
 
 let opt1 = 'Pesquisar por pergunta específica';
 let opt2 = 'Ver as respostas';
-let opt3 = 'Jogar o quiz';
+let opt3 = 'Jogar o Dquiz';
 let opt4 = 'Por enquanto está ok';
 
 library.dialog('question', [

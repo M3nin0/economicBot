@@ -15,7 +15,7 @@ let yes = 'Sim';
 let not = 'Não';
 let opt1 = 'Perguntas';
 let opt2 = 'Respostas';
-let opt3 = 'Quiz';
+let opt3 = 'DQuiz';
 let opt4 = 'Ver todas as perguntas';
 let opt5 = 'Insira o número da pergunta';
 let opt6 = 'Todas as respostas';
@@ -108,10 +108,13 @@ library.dialog('yes', [
         builder.Prompts.choice(session, 'Escolha uma das opções', [opt1, opt2, opt3], { listStyle: builder.ListStyle.button });
     },
     (session, result) => { 
-        if (result.response.entity === opt1)
+        resultado = result.response.entity; 
+        if (resultado === opt1)
             session.replaceDialog('getQuestions:getPerguntas');
-        else if (result.response.entity === opt2)
+        else if (resultado === opt2)
             session.replaceDialog('getQuestions:getResposta');
+        else if (resultado === opt3) 
+            session.replaceDialog('playQuiz:start');
     }
 ])
 
