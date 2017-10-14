@@ -5,22 +5,27 @@ const getQuestions = require('./dialogs/getQuestions');
 
 const server = restify.createServer();
 server.listen(process.env.port || process.env.PORT || 3978, () => {
-    console.log('Rodando em: %s', server.url);
+    console.log('No ar em: %s', server.url);
 });
 
 const connector = new builder.ChatConnector({
-    appId: 'id',
-    appPassword: 'id'
+    appId: '',
+    appPassword: ''
 });
 
 server.post('/api/messages', connector.listen());
-
-const recognizer = new apiairecognizer("API AI KEY");
+const bot = new builder.UniversalBot(connector);
+const recognizer = new apiairecognizer("");
 const intents = new builder.IntentDialog({
     recognizers: [recognizer]
 });
 
-const bot = new builder.UniversalBot(connector);
-
 bot.library(getQuestions);
 bot.dialog('/', intents);
+
+intents.matches('boasVindas', function(session, results) {
+    let fulfillment = builder.EntityRecognizer.findEntity(results.entities, 'fulfillment')
+    if (fulfillment) {
+        session.beginDialog('getQuestions:/')
+    } 
+})

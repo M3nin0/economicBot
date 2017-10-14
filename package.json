@@ -15,5 +15,10 @@
   "bugs": {
     "url": "https://github.com/M3nin0/economicBot/issues"
   },
-  "homepage": "https://github.com/M3nin0/economicBot#readme"
+  "homepage": "https://github.com/M3nin0/economicBot#readme",
+  "dependencies": {
+    "api-ai-recognizer": "^1.1.1",
+    "botbuilder": "^3.11.0",
+    "restify": "^6.0.1"
+  }
 }
